@@ -1,0 +1,26 @@
+Package: timelog
+Type: Package
+Title: Parse list-based timelog entries into a time total
+Version: 0.1.0
+Authors@R: person("Jacob", "Levernier", email = "j@adunumdatum.org",
+                  role = c("aut", "cre"))
+Maintainer: Jacob Levernier <j@adunumdatum.org>
+Description: Parse list-based timelog entries -- for instance, embedded in a
+    JSON file -- and optionally return a total deficit or surplus of time 
+    computed against a per-entry comparison amount.
+License: BSD_3_clause + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    clipr,
+    dplyr,
+    glue,
+    lubridate,
+    magrittr,
+    rlang,
+    tibble,
+    utils,
+    yaml
+Suggests: 
+    testthat
+RoxygenNote: 7.0.2
