@@ -1,6 +1,6 @@
 PackratFormat: 1.4
 PackratVersion: 0.5.0
-RVersion: 3.5.1
+RVersion: 3.4.4
 Repos: CRAN=https://cran.rstudio.com/
 
 Package: BH
@@ -53,8 +53,8 @@ Hash: 931f9972deae0f205e1c78a51f33149b
 
 Package: callr
 Source: CRAN
-Version: 3.4.0
-Hash: ae27c37525b77ec1a7b387cd9451219d
+Version: 3.4.1
+Hash: 01c59deaffdfad11012f79174f335e6c
 Requires: R6, processx
 
 Package: cli
@@ -173,9 +173,9 @@ Requires: digest, gtable, lazyeval, reshape2, rlang, scales, tibble,
 
 Package: gh
 Source: CRAN
-Version: 1.0.1
-Hash: 3f8812accd1320227d744bca620e8c42
-Requires: httr, ini, jsonlite
+Version: 1.1.0
+Hash: efbe85b24e36b328003fd33772a8931b
+Requires: cli, httr, ini, jsonlite
 
 Package: git2r
 Source: CRAN
@@ -328,8 +328,8 @@ Hash: 77da8f1df873a4b91e5c4a68fe2fb1b6
 
 Package: prettyunits
 Source: CRAN
-Version: 1.1.0
-Hash: 74b7187f3434bdc54248ea95f4bdb0ae
+Version: 1.1.1
+Hash: 20669cd8bb8b3207f6371edf8cf510af
 
 Package: processx
 Source: CRAN
@@ -380,8 +380,8 @@ Requires: lazyeval, magrittr
 
 Package: rlang
 Source: CRAN
-Version: 0.4.2
-Hash: c5cfcde637bbff4e42edad2e69dac5c7
+Version: 0.4.3
+Hash: 72aafe33bfcc951c3d062bc7a62ca81e
 
 Package: roxygen2
 Source: CRAN
@@ -481,9 +481,9 @@ Hash: f3f97ce59092abc8ed3fd098a59e236c
 
 Package: vctrs
 Source: CRAN
-Version: 0.2.1
-Hash: 8ba1577e36ecf03aed0660c019fe7097
-Requires: backports, digest, ellipsis, glue, rlang, zeallot
+Version: 0.2.2
+Hash: 6a0e82b8dac8abd93ea0ce8adc996986
+Requires: digest, ellipsis, glue, rlang
 
 Package: viridisLite
 Source: CRAN
@@ -521,8 +521,3 @@ Package: yaml
 Source: CRAN
 Version: 2.2.0
 Hash: a5ad5616d83d89f8d84cbf3cf4034e13
-
-Package: zeallot
-Source: CRAN
-Version: 0.1.0
-Hash: 10b2ed48e202b4db421ae864041dc4b2

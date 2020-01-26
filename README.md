@@ -39,7 +39,15 @@ An example VSCode snippet:
 }
 ```
 
-## Building and testing
+## Developing
+
+1. In RStudio, open `timelog.Rproj`
+2. Run `packrat::on()`
+3. Edit any files necessary for the work.
+4. If you install packages, run `packrat::snapshot()`.
+5. If you need to update documentation, run `devtools::document()`.
+
+### Building and testing
 
 For information on R packaging, see http://r-pkgs.had.co.nz/.
 
