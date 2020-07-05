@@ -1,0 +1,80 @@
+---
+title: "Time Sheet"
+output:
+  html_document
+---
+
+```{r setup, include=FALSE}
+library(magrittr)
+```
+
+```{r time data, include=FALSE}
+# This template can be re-created with yaml_template()
+
+yaml_data <- "
+# Abbreviations:
+#   m     d     H      M       S
+# months days hours minutes seconds
+
+# Starting totals:
+Total:
+  deficit: no
+  hours: 0
+  minutes: 0
+
+Days:
+  01-01 (Or whatever other title for this date):
+    targetDuration: 7H
+    times:
+      - 09:00 - 13:00  # Time range
+      - +1H20M         # Duration addition
+      - -15M           # Duration subtraction
+  
+  01-02:
+    targetDuration: 7H
+    times:
+      - 09:00 - 12:00
+      - 12:30 - 20:00
+"
+
+parsed_data <- yaml::read_yaml(text = yaml_data)
+```
+
+## Overall time surplus / deficit
+
+```{r overall time surplus or deficit, echo=FALSE, message=FALSE, warning=FALSE}
+timelog::parse_times(
+  parsed_data,
+  returnIntermediateTable = FALSE
+) %>% 
+  dplyr::rename(
+    'Deficit?' = deficit,
+    Hours = hours,
+    Minutes = minutes
+  ) %>% 
+  knitr::kable()
+```
+
+## Daily timesheets
+
+```{r daily timesheets, echo=FALSE, message=FALSE, warning=FALSE}
+timelog::parse_times(
+  parsed_data,
+  returnIntermediateTable = TRUE
+) %>% 
+  dplyr::rename(
+    Day = day,
+    'Daily Total' = total_time,
+    'Daily Total Deficit?' = total_time_deficit,
+    'Target Duration' = target_duration,
+    'Target Duration is Negative?' = target_duration_negative
+  ) %>% 
+  dplyr::select(
+    'Day',
+    'Daily Total',
+    'Target Duration',
+    'Daily Total Deficit?',
+    'Target Duration is Negative?'
+  ) %>% 
+  knitr::kable()
+```

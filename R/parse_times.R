@@ -11,10 +11,11 @@
 #'                starting timelog totals.
 #'    2. hours:   The number of hours.
 #'    3. minutes: The number of minutes.
-#'  If returnIntermediateTable is TRUE, a tibble, aggregated by day, with three columns:
-#'    1. day:             The day identifier.
-#'    2. total_time:      The total time logged on the day.
-#'    3. target_duration: The target duration for the day, if any.
+#'  If returnIntermediateTable is TRUE, a tibble, aggregated by day, with four columns:
+#'    1. day:                    The day identifier.
+#'    2. total_time_formatted:   The total time logged for that day.
+#'    3. total_time_deficit:     Whether total_time_formatted is negative.
+#'    4. target_duration:        The target duration for the day.
 #' @export
 #'
 #' @importFrom rlang .data
@@ -121,7 +122,23 @@ parse_times <- function(times, returnIntermediateTable = FALSE) {
 
       if (returnIntermediateTable == TRUE) {
         message("Returning intermediate table...")
-        return (chunked_data)
+        return (
+          chunked_data %>%
+            dplyr::mutate(
+              total_time = as.character(.data$total_time)
+            ) %>%
+            dplyr::transmute(
+              day,
+              total_time = lubridate::seconds_to_period(
+                lubridate::as.period(.data$total_time)
+              ),
+              total_time_deficit = lubridate::as.period(.data$total_time) < 0,
+              target_duration = lubridate::seconds_to_period(
+                lubridate::as.period(.data$target_duration)
+              ),
+              target_duration_negative = lubridate::as.period(.data$target_duration) < 0,
+            )
+        )
       }
 
       summaryTable <- chunked_data %>%
