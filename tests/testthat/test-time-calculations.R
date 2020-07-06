@@ -158,8 +158,8 @@ test_that("Intermediate table is as expected", {
   expect_equal(
     parse_times(input_yaml, returnIntermediateTable = TRUE),
     tibble::tribble(
-      ~day,    ~total_time_formatted,         ~target_duration,
-      "Day 1", -lubridate::as.period("2M0S"), lubridate::as.period("0S")
+      ~day,    ~total_time, ~total_time_deficit, ~target_duration, ~target_duration_negative,
+      "Day 1", lubridate::as.period("2M0S"), FALSE, lubridate::as.period("0S"), FALSE
     )
   )
 })

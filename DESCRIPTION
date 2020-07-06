@@ -6,7 +6,7 @@ Authors@R: person("Jacob", "Levernier", email = "j@adunumdatum.org",
                   role = c("aut", "cre"))
 Maintainer: Jacob Levernier <j@adunumdatum.org>
 Description: Parse list-based timelog entries -- for instance, embedded in a
-    JSON file -- and optionally return a total deficit or surplus of time 
+    YAML file -- and optionally return a total deficit or surplus of time 
     computed against a per-entry comparison amount.
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
