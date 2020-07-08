@@ -1,6 +1,6 @@
 Package: timelog
 Type: Package
-Title: Parse list-based timelog entries into a time total
+Title: Parse List-Based Timelog Entries into a Time Total
 Version: 0.1.0
 Authors@R: person("Jacob", "Levernier", email = "j@adunumdatum.org",
                   role = c("aut", "cre"))
@@ -14,13 +14,12 @@ LazyData: true
 Imports:
     clipr,
     dplyr,
-    glue,
     lubridate,
     magrittr,
     rlang,
     tibble,
-    utils,
-    yaml
+    utils
 Suggests: 
-    testthat
+    testthat,
+    yaml
 RoxygenNote: 7.0.2
