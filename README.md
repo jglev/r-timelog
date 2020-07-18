@@ -11,9 +11,7 @@ It takes a [YAML](https://en.wikipedia.org/wiki/YAML) collection of time entries
 
 ### RMarkdown template
 
-`timelog` comes with an [RMarkdown](https://rmarkdown.rstudio.com/) template that can be used within [RStudio](https://rstudio.com/). It allows recording time entries at the top of the RMarkdown document, and compiling the document into a ready-made report:
-
-![Compiled RMarkdown document](docs/img/compiled_rmarkdown_document.png)
+`timelog` comes with an [RMarkdown](https://rmarkdown.rstudio.com/) template that can be used within [RStudio](https://rstudio.com/). It allows recording time entries at the top of the RMarkdown document, and compiling the document into a ready-made report.
 
 ### Commands
 
@@ -22,7 +20,7 @@ It takes a [YAML](https://en.wikipedia.org/wiki/YAML) collection of time entries
 1. `timelog::yaml_template`: Print a YAML template to start a timesheet with.
 2. `timelog::parse_times`: Parse a YAML timesheet to create a summary table.
 
-### From a `sh`/`bash` or similar UNIX shell
+### Using `timelog` from an `sh`/`bash` shell or similar UNIX shell
 
 You can use `timelog` from a UNIX shell by saving a script (e.g., titled `timelog.R`), with the following contents:
 
@@ -46,12 +44,12 @@ timelog::parse_times(
 
 ```
 
-You can then call the script from a shell with `Rscript timelog.R path/to/log-file.yaml`
+You can then call the script from a shell with `Rscript timelog.R path/to/log-file.yaml` for a day-by-day table, or `Rscript timelog.R path/to/log-file.yaml true` for a summary table.
 
 ## Developing
 
 1. In RStudio, open `timelog.Rproj`
-2. Run `packrat::on()`
+2. Run `packrat::on()`.
 3. Edit any files necessary for the work.
 4. If you install packages, run `packrat::snapshot()`.
 5. If you need to update documentation, run `devtools::document()`.
@@ -64,4 +62,14 @@ Keyboard shortcuts for package authoring within RStudio:
 
 - Build and Reload Package: `Cmd + Shift + B`
 - Check Package: `Cmd + Shift + E`
+
+  - If `devtools::check_rhub()` is returning `Error in loadNamespace(name) : there is no package called 'utf8'`, [you can use the following to avoid it](https://community.rstudio.com/t/r-hub-builder-there-is-no-package-called-utf8/65694/2):
+
+    ```R
+    rhub::check(
+        platform="windows-x86_64-devel",
+        env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always")
+    )
+    ```
+
 - Test Package: `Cmd + Shift + T`
