@@ -20,5 +20,6 @@ Imports:
     tibble,
     utils
 Suggests: 
+    testthat,
     yaml
 RoxygenNote: 7.0.2
