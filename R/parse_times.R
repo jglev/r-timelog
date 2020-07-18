@@ -44,9 +44,9 @@ parse_times <- function(times, returnIntermediateTable = FALSE) {
   if (!is.null(times$Days)) {
     parsed_data <- dplyr::tibble(
       day = character(),
-      start_time = character(),
-      end_time = character(),
-      duration = character()
+      start_time = lubridate::period(),
+      end_time = lubridate::period(),
+      duration = double()
     )
 
     for (i in 1:length(times$Days)) {
@@ -93,7 +93,15 @@ parse_times <- function(times, returnIntermediateTable = FALSE) {
           }
 
           if (data_to_add %>% nrow() > 0) {
-            parsed_data <- suppressWarnings(rbind(parsed_data, data_to_add))
+            parsed_data <- parsed_data %>%
+              tibble::add_row(
+                data_to_add %>%
+                  dplyr::mutate(
+                    start_time = lubridate::as.period(.data$start_time),
+                    end_time = lubridate::as.period(.data$end_time),
+                    duration = as.double(.data$duration)
+                  )
+              )
           }
         }
       } else {
@@ -104,9 +112,10 @@ parse_times <- function(times, returnIntermediateTable = FALSE) {
     if (parsed_data %>% nrow() > 0) {
       chunked_data <- parsed_data %>%
         dplyr::group_by(.data$day) %>%
-        dplyr::summarise(
+        dplyr::summarize(
           total_time = lubridate::as.period(sum(.data$duration)),
-          target_duration = NA
+          target_duration = NA,
+          .groups = "keep"
         ) %>%
         dplyr::ungroup()
 
