@@ -114,7 +114,7 @@ parse_times <- function(times, returnIntermediateTable = FALSE) {
         dplyr::group_by(.data$day) %>%
         dplyr::summarize(
           total_time = lubridate::as.period(sum(.data$duration)),
-          target_duration = NA,
+          target_duration = as.double(NA),
           .groups = "keep"
         ) %>%
         dplyr::ungroup()
