@@ -2,7 +2,7 @@
 
 `timelog` is a package for calculating the amount of time one has worked on a project, relative to how much time one has meant to work on a project.
 
-It takes a collection of time entries -- for instance, in a YAML file -- returns either:
+It takes a [YAML](https://en.wikipedia.org/wiki/YAML) collection of time entries and returns either:
 
 1. A day-by-day tibble of time logged and whether that time was above or below a goal (for example, whether one worked more or less in a day than an expectation of _x_ hours), or:
 2. A total calculation of the time one has logged above or below one's time goals (for example, if one has committed to work on a project for _x_ hours per week, how much time one has worked on the project relative to that goal).

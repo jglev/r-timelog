@@ -40,21 +40,6 @@ Days:
 parsed_data <- yaml::read_yaml(text = yaml_data)
 ```
 
-## Overall time surplus / deficit
-
-```{r overall time surplus or deficit, echo=FALSE, message=FALSE, warning=FALSE}
-timelog::parse_times(
-  parsed_data,
-  returnIntermediateTable = FALSE
-) %>% 
-  dplyr::rename(
-    'Deficit?' = deficit,
-    Hours = hours,
-    Minutes = minutes
-  ) %>% 
-  knitr::kable()
-```
-
 ## Daily timesheets
 
 ```{r daily timesheets, echo=FALSE, message=FALSE, warning=FALSE}
@@ -75,6 +60,21 @@ timelog::parse_times(
     'Target Duration',
     'Daily Total Deficit?',
     'Target Duration is Negative?'
+  ) %>% 
+  knitr::kable()
+```
+
+## Overall time surplus / deficit
+
+```{r overall time surplus or deficit, echo=FALSE, message=FALSE, warning=FALSE}
+timelog::parse_times(
+  parsed_data,
+  returnIntermediateTable = FALSE
+) %>% 
+  dplyr::rename(
+    'Deficit?' = deficit,
+    Hours = hours,
+    Minutes = minutes
   ) %>% 
   knitr::kable()
 ```
