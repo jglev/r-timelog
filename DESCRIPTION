@@ -3,7 +3,7 @@ Type: Package
 Title: Parse List-Based Timelog Entries into a Time Total
 Version: 0.1.0
 Authors@R: person("Jacob", "Levernier", email = "j@adunumdatum.org",
-                  role = c("aut", "cre"))
+                  role = c("aut", "cre", "cph", "ctb"))
 Maintainer: Jacob Levernier <j@adunumdatum.org>
 Description: Parse list-based timelog entries -- for instance, embedded in a
     YAML file -- and optionally return a total deficit or surplus of time 
