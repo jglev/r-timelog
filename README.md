@@ -72,4 +72,6 @@ Keyboard shortcuts for package authoring within RStudio:
     )
     ```
 
+  - Because this package's `DESCRIPTION` file uses `Authors@` rather than `Author`, to run `R CMD check`, [one needs to first run `R CMD build`](https://github.com/braverock/PerformanceAnalytics/issues/55#issuecomment-230161030), and then run `R CMD check` on the resulting tar file.
+
 - Test Package: `Cmd + Shift + T`
